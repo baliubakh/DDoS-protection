@@ -4,7 +4,6 @@ import path from "path";
 const FILE_PATH = path.join(__dirname, "..", "iplist.txt");
 
 class IpHandler {
-  // Get IP list from file
   static async getIpList(): Promise<string[]> {
     try {
       const data = await fs.promises.readFile(FILE_PATH, "utf8");
@@ -15,7 +14,6 @@ class IpHandler {
     }
   }
 
-  // Add an IP address to the list and file
   static async addIpAddress(ip: string): Promise<void> {
     const ipList = await IpHandler.getIpList();
 
@@ -29,7 +27,6 @@ class IpHandler {
     }
   }
 
-  // Delete an IP address from the file
   static async deleteIpAddress(ip: string): Promise<void> {
     const ipList = (await IpHandler.getIpList()).filter((item) => item !== ip);
     try {
